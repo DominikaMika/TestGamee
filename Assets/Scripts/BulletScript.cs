@@ -42,6 +42,6 @@ public class BulletScript : MonoBehaviour
         obj.GetComponent<Rigidbody>().AddForce(velocityDirection);
 
         // Detta förstör åter vår bullet efter 3 sekunder
-        Destroy(obj, 3);
+        Destroy(obj, 8);
     }
 }

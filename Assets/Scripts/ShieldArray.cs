@@ -5,37 +5,29 @@ using UnityEngine;
 public class ShieldArray : MonoBehaviour
 {
     [SerializeField]
-    private GameObject enemyPrefab;
-    [SerializeField]
-    private GameObject player;
+    private GameObject shieldPrefab;
 
     [SerializeField]
-    private int numOfEnemy;
+    private int numOfShields;
 
-    [SerializeField]
-    private float enemySpeed;
 
     [SerializeField]
     private float maxX;
     [SerializeField]
     private float minX;
-    [SerializeField]
-    private float maxZ;
-    [SerializeField]
-    private float minZ;
+    
 
-    private List<GameObject> enemies = new List<GameObject>();
+    private List<GameObject> shields = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
-        for (int n = 0; n < numOfEnemy; n++)
+        for (int n = 0; n < numOfShields; n++)
         {
             float dx = Random.Range(minX, maxX);
-            float dz = Random.Range(minZ, maxZ);
 
-            GameObject obj = Instantiate(enemyPrefab, new Vector3(dx, 1, dz), Quaternion.identity);
-            enemies.Add(obj);
+            GameObject obj = Instantiate(shieldPrefab, new Vector3(dx, 3, -10), Quaternion.identity);
+            shields.Add(obj);
 
         }
 
@@ -44,12 +36,16 @@ public class ShieldArray : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < numOfEnemy; i++)
+        for(int n = 0; n < numOfShields; n++)
         {
-            float step = Time.deltaTime * enemySpeed;
-            Vector3 enemyPos = enemies[i].transform.position;
-            Vector3 playerPos = player.transform.position;
-            enemies[i].transform.position = Vector3.MoveTowards(enemyPos, playerPos, step);
+            ShieldScript p  = shields[n].GetComponent<ShieldScript>();
+           
+            if(p.getNumberOfHits() == 3)
+            {
+                Debug.Log("Träff " + p.getNumberOfHits());
+                shields[n].SetActive(false);
+                //shields.RemoveAt(n);
+            }
         }
     }
 }

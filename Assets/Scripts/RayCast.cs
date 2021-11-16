@@ -36,9 +36,10 @@ public class RayCast : MonoBehaviour
             LayerMask mask = LayerMask.GetMask("Shields");
             //int mask = 1 << _interactionMask;
 
-            if (Physics.Raycast(ray, out hitInfo, 10, mask))
+            if (Physics.Raycast(ray, out hitInfo, 30, mask))
             {
-                //Debug.Log(hitInfo.collider.name);
+                Debug.Log(hitInfo.collider.name);
+
                 //Debug.DrawRay(transform.position, transform.forward * hitInfo.distance, Color.red);
             }
         }

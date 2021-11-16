@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ShieldScript : MonoBehaviour
 {
-    [SerializeField]
-    int ShieldID;
+    private int NumberOfHits = 0;
   
     // Start is called before the first frame update
     void Start()
@@ -22,10 +21,15 @@ public class ShieldScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
-            //Debug.Log("You hit the " + ShieldID + " shield");
-            Gameobject.Destroy();
+            Debug.Log("You hit a shield!");
+            NumberOfHits++;
         }
 
+    }
+
+    public int getNumberOfHits()
+    {
+        return NumberOfHits;
     }
 
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shie : MonoBehaviour
+public class EnemyHandler : MonoBehaviour
 {
     [SerializeField]
     private GameObject enemyPrefab;
