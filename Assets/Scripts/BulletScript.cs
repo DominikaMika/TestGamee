@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     [SerializeField]
-    private GameObject Bullet;
+    private GameObject bulletPrefab;
 
     [SerializeField]
     private Transform startBulletPoint;
@@ -15,22 +15,23 @@ public class BulletScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Fire();
-        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-      
+        if (Input.GetMouseButtonDown(0))
+        {
+            Fire();
+        }
     }
-    private void Fire()
+    
+    public void Fire()
     {
         // Skapa en ny kopia av bullet objektet och placera denna
         // vid vår startBulletPoint 
-        GameObject obj = Instantiate(Bullet, startBulletPoint.position, startBulletPoint.rotation);
+        GameObject obj = Instantiate(bulletPrefab, startBulletPoint.position, startBulletPoint.rotation);
 
         // Denna rad ser till att beroende på i vilken riktning startBulletPoint pekar åt
         // så kommer vi också kasta vår projektil/bullet i just den riktningen

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RayCastShooting : MonoBehaviour
 {
+    //public BulletScript bs;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,7 @@ public class RayCastShooting : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, 100))
         {
-            Debug.Log("Hit something!");
+            //bs.Fire();
         }
            
     }
